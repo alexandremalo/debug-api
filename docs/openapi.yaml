@@ -7,7 +7,7 @@ info:
     email: alexandre@malo.tech
   version: 1.0.1
 servers:
-  - url: https://debug-api-yujzwofzgq-uc.a.run.app/
+  - url: https://debug-api.malo.tech/
 paths:
   /:
     post:
