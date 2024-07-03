@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: debug-api
+  description: Simple toolkit project with bunch of troubleshooting REST API calls
+  tags:
+    - rest
+spec:
+  type: openapi
+  lifecycle: production
+  owner: alexandre@malo.tech
+  definition:
+    $text: https://github.com/alexandremalo/debug-api/blob/master/docs/openapi.yaml

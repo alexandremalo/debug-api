@@ -1,0 +1,60 @@
+openapi: 3.0.3
+info:
+  title: Debug API
+  description: |-
+    Simple toolkit project with bunch of troubleshooting REST API calls
+  contact:
+    email: alexandre@malo.tech
+  version: 1.0.1
+servers:
+  - url: https://debug-api-yujzwofzgq-uc.a.run.app/
+paths:
+  /:
+    post:
+      summary: Webhook troubleshooting
+      description: Endpoint to send traffic too to troubleshoot content of request
+      operationId: webhook-post-debug
+      requestBody:
+        description: Create a new pet in the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DebugPayload'
+        required: true
+      responses:
+        '201':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DebugResponse'          
+
+components:
+  schemas:
+    DebugPayload:
+      type: object
+      additionalProperties: true
+      example: 
+        key1: 'value1'
+        key2: 2
+        key3: 3.45
+        key4: true
+    DebugResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: OK!
+        body_received:
+          type: object
+          example: 
+            key1: 'value1'
+            key2: 2
+            key3: 3.45
+            key4: true
+        headers_received:
+          type: object
+          example: 
+            content-type: 'application/json'
+            accept-encoding: 'gzip, deflate, br'
+            accept: '*/*'
