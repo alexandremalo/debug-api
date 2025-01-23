@@ -9,16 +9,24 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
 
 const postDebug = (request, response) => {
-  console.log("====== Request Begin ======")
+  console.log("====== POST Request Begin ======")
   console.log(request.body)
   console.log(request.headers)
-  console.log("======  Request End ======")
+  console.log("====== POST Request End ======")
   response.status(201).json({ status: 'OK!', body_received: request.body, headers_received: request.headers })
+}
+
+const hello = (request, response) => {
+ console.log("====== GET Request Begin ======")
+ console.log(request.headers)
+ console.log("====== GET Request End ======")
+ response.status(200).json({ status: 'OK!', headers_received: request.headers })
 }
 
 app
   .route('/')
   .post(postDebug)
+  .get(hello)
 
 // Start server
 app.listen(process.env.PORT || 5000, () => {
